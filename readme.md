@@ -1,8 +1,8 @@
 # Class-Balanced Loss Based on Effective Number of Samples
 
-论文链接：[https://arxiv.org/abs/1901.05555](https://arxiv.org/abs/1901.05555)
+Paper link: [https://arxiv.org/abs/1901.05555](https://arxiv.org/abs/1901.05555) (CVPR2019)
 
-## Environment
+## Environment and Prepare
 - torch (2.0.1)
 - torchvision (0.15.2)
 - os
@@ -10,7 +10,7 @@
 
 ## Datasets
 
-- Long-Tailed CIFAR10/CIFAR100 with imbalance ratio {1, 10, 20, 50, 100, 200}.
+- Long-Tailed CIFAR10/CIFAR100 with imbalance ratio {1, 10, 20, 50, 100, 200}. 
 
 ## Training and Evaluation
 
@@ -152,4 +152,10 @@ python train.py --loss_type "focal" --imbalance_ratio 200
 |       50        | 	ResNet-32    |  CIFAR100 |   Focal Loss	 |      42.94      |
 |       100       | 	ResNet-32    |  CIFAR100 |   Focal Loss	 |      36.78      |
 |       200       | 	ResNet-32    |  CIFAR100 |   Focal Loss	 |      32.93      |
+
+## Reference
+
+[1] [https://github.com/vandit15/Class-balanced-loss-pytorch](https://github.com/vandit15/Class-balanced-loss-pytorch)
+
+[2] [https://github.com/richardaecn/class-balanced-loss](https://github.com/richardaecn/class-balanced-loss) (Offical codes with Tensorflow)
 
