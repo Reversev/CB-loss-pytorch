@@ -33,22 +33,26 @@ def get_data(file_path, train=False, num_classes=10, imbalance_ratio=1):
                 data = np.concatenate([data, batch[b'data']])
                 labels = np.concatenate([labels, batch[b'labels']])
 
-        count = np.zeros((num_classes), dtype=np.int32)
-        for i in range(len(labels)):
-            data[i] = data[i].reshape((1, -1))
-            # set n = n_i * u^i, u = (1 / 100) ** (1 / 9), 100 presents imbalance factor
-            # int(np.floor(5000 * ((1 / 100) ** (1 / 9)) ** (i)))
-            if count[labels[i]] < num_per_classes[labels[i]]:
-                count[labels[i]] += 1
-                if i == 0:
-                    new_data = data[i]
+        if imbalance_ratio != 1:
+            count = np.zeros((num_classes), dtype=np.int32)
+            for i in range(len(labels)):
+                data[i] = data[i].reshape((1, -1))
+                # set n = n_i * u^i, u = (1 / 100) ** (1 / 9), 100 presents imbalance factor
+                # int(np.floor(5000 * ((1 / 100) ** (1 / 9)) ** (i)))
+                if count[labels[i]] < num_per_classes[labels[i]]:
+                    count[labels[i]] += 1
+                    if i == 0:
+                        new_data = data[i]
+                    else:
+                        new_data = np.concatenate([new_data, data[i]])
+                    new_labels.append(labels[i])
                 else:
-                    new_data = np.concatenate([new_data, data[i]])
-                new_labels.append(labels[i])
-            else:
-                continue
-        new_labels = np.array(new_labels)
-        new_data = new_data.reshape(-1, 3072)
+                    continue
+            new_labels = np.array(new_labels)
+            new_data = new_data.reshape(-1, 3072)
+        else:
+            new_data = data 
+            new_labels = labels
     else:
         batch = unpickle(file_path + "cifar-10-batches-py/test_batch")
         new_data = batch[b'data']
