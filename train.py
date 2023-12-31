@@ -150,11 +150,11 @@ if __name__ == "__main__":
                     best_acc = acc
                     torch.save(net.state_dict(), '%s/net_best.pth' % (args.outf))
 
-                print('epoch:%d Loss: %.04f | Acc: %.3f%% | Lr: %.03f | Acc: %.3f%% | Best_acc: %.3f%%'
+                print('Epoch:%d Loss: %.04f | Acc: %.3f%% | Lr: %.03f | Acc: %.3f%% | Best_acc: %.3f%%'
                       % (epoch + 1, sum_loss / len(trainloader),
                          100. * float(correct) / total, optimizer.state_dict()['param_groups'][0]['lr'],
                          acc, best_acc))
-                f2.write('epoch:%d Loss: %.03f | Acc: %.3f%% | Lr: %.03f | Acc: %.3f%% | Best_acc: %.3f%%'
+                f2.write('Epoch:%d Loss: %.03f | Acc: %.3f%% | Lr: %.03f | Acc: %.3f%% | Best_acc: %.3f%%'
                          % (epoch + 1, sum_loss / len(trainloader),
                             100. * float(correct) / total, optimizer.state_dict()['param_groups'][0]['lr'],
                             acc, best_acc))
