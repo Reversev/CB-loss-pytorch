@@ -14,6 +14,7 @@ Paper link: [https://arxiv.org/abs/1901.05555](https://arxiv.org/abs/1901.05555)
 
 ## Training and Evaluation
 
+- ```--outf``` set folder to output images and model best checkpoints.
 - ```--imbalance_ratio``` set an imbalance ratio ```({1, 10, 20, 50, 100, 200})``` from CIFAR10/CIFAR100 (default: 'cifar10').
 - ```--loss_type``` set a loss type ```('sigmoid'/'softmax'/'focal')``` with class-balance loss (default: 'softmax'). 
 - ```--dataset``` set a dataset name ```('cifar10'/'cifar100')``` (default: 'cifar10').
