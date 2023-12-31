@@ -20,7 +20,7 @@ def target_transform(label):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='PyTorch CIFAR10 Training')
-    parser.add_argument('--outf', default='./model/', help='folder to output images and model checkpoints')  # 输出结果保存路径
+    parser.add_argument('--outf', default='./model/', help='folder to output images and model checkpoints')  
     parser.add_argument('--imbalance_ratio', type=int, default=10,
                         help='input batch size for training and eval(default: 1)')
     parser.add_argument('--loss_type', type=str, default='softmax',
